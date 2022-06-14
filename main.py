@@ -5,7 +5,7 @@ import settings
 
 
 app = Flask(__name__)
-oauth = OAuth()
+oauth = OAuth(app)
 oauth.register(
     name="github",
     client_id = settings.CLIENT_ID,
