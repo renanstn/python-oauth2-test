@@ -5,6 +5,7 @@ import settings
 
 
 app = Flask(__name__)
+app.secret_key = settings.SECRET_KEY
 oauth = OAuth(app)
 oauth.register(
     name="github",
