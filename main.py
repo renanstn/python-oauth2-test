@@ -23,13 +23,13 @@ def hello_world():
     return "<h1>Secret area!</h1>"
 
 @app.route("/login")
-def login(request):
+def login():
     github = oauth.create_client('github')
     redirect_uri = 'https://python-oauth2-test.herokuapp.com/authorize'
     return github.authorize_redirect(request, redirect_uri)
 
 @app.route("/authorize")
-def authorize(request):
+def authorize():
     token = oauth.github.authorize_access_token(request)
     resp = oauth.github.get('user', token=token)
     resp.raise_for_status()
