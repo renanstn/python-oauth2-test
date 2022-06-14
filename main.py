@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request
 from authlib.integrations.flask_client import OAuth
 
 import settings
