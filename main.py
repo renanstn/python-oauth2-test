@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for
 from authlib.integrations.flask_client import OAuth
 
 import settings
@@ -26,11 +26,11 @@ def hello_world():
 def login():
     github = oauth.create_client('github')
     redirect_uri = 'https://python-oauth2-test.herokuapp.com/authorize'
-    return github.authorize_redirect(request, redirect_uri)
+    return github.authorize_redirect(redirect_uri)
 
 @app.route("/authorize")
 def authorize():
-    token = oauth.github.authorize_access_token(request)
+    token = oauth.github.authorize_access_token()
     resp = oauth.github.get('user', token=token)
     resp.raise_for_status()
     profile = resp.json()
